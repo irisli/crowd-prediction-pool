@@ -32,7 +32,6 @@ $ node main.js
 	- **name** - Text name of profile
 	- **slug** - URL safe representation of the name (lowercase and no spaces)
 	- **s3File** - Filename of the database
-
 	- **minAccountAge** - Minimum reddit coinsight age to be included in pool.
 	- **minCurrentProfit** - Minimum coinsight monthly profit to be included in pool.
 	- **minTotalProfit** - Minimum coinsight lifetime profit to be included in pool.
@@ -50,5 +49,3 @@ $ node main.js
 - **percentBears** - Percent of bull flairs
 - **creationTime** - Time of the javaScript coinsight object creation
 - **totalProfit** - Percent profit of the profile in decimal form (1 = break even)
-
-
