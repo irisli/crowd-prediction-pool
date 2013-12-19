@@ -1,0 +1,199 @@
+{
+  "aws": {
+    "accessKeyId": "KEYGOESHERE",
+    "secretAccessKey": "123KEYGOESHERE",
+    "region": "us-east-1"
+  },
+  "bucket": "bucket-name-here",
+  "port": 8000,
+  "s3File": "data.json",
+  "exchangeFee": 0.5,
+  "exchangeHours": [0,6,12,18],
+  "profiles": [{
+      "name": "Old Elitist",
+      "slug": "oldelitist",
+      "minAccountAge": 21,
+      "minCurrentProfit": 30,
+      "minTotalProfit": 30,
+      "minChangesMonth": 5,
+      "minChangeCount": 3,
+      "maxLastChange": 4
+    },{
+      "name": "Young Elitist",
+      "slug": "youngelitist",
+      "minAccountAge": 7,
+      "minCurrentProfit": 30,
+      "minTotalProfit": 30,
+      "minChangesMonth": 5,
+      "minChangeCount": 3,
+      "maxLastChange": 4
+    },{
+      "name": "Aged Profitable",
+      "slug": "agedprofitable",
+      "minAccountAge": 14,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 5,
+      "minChangeCount": 3,
+      "maxLastChange": 4
+    },{
+      "name": "All Profitable",
+      "slug": "allprofitable",
+      "minAccountAge": 2,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 5,
+      "minChangeCount": 3,
+      "maxLastChange": 4
+    },{
+      "name": "Young Daytrader",
+      "slug": "youngdaytrader",
+      "minAccountAge": 7,
+      "minCurrentProfit": 5,
+      "minTotalProfit": 5,
+      "minChangesMonth": 10,
+      "minChangeCount": 10,
+      "maxLastChange": 2
+    },{
+      "name": "[w] Young Daytrader",
+      "slug": "wyoungdaytrader",
+      "minAccountAge": 7,
+      "minCurrentProfit": 5,
+      "minTotalProfit": 5,
+      "minChangesMonth": 10,
+      "minChangeCount": 10,
+      "maxLastChange": 2,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 1
+      }
+    },{
+      "name": "Old Daytrader",
+      "slug": "olddaytrader",
+      "minAccountAge": 14,
+      "minCurrentProfit": 5,
+      "minTotalProfit": 5,
+      "minChangesMonth": 10,
+      "minChangeCount": 10,
+      "maxLastChange": 2
+    },{
+      "name": "[w] Old Daytrader",
+      "slug": "wolddaytrader",
+      "minAccountAge": 14,
+      "minCurrentProfit": 5,
+      "minTotalProfit": 5,
+      "minChangesMonth": 10,
+      "minChangeCount": 10,
+      "maxLastChange": 2,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 1
+      }
+    },{
+      "name": "24 hour Opinions",
+      "slug": "24houropinions",
+      "minAccountAge": 0,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 1
+    },{
+      "name": "3 day Opinions",
+      "slug": "3dayopinions",
+      "minAccountAge": 0,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 3
+    },{
+      "name": "5 day Opinions",
+      "slug": "5dayopinions",
+      "minAccountAge": 0,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 5
+    },{
+      "name": "[w] 3 day Opinions",
+      "slug": "w3dayopinions",
+      "minAccountAge": 0,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 3,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 1.5
+      }
+    },{
+      "name": "5 day Opinions",
+      "slug": "w5dayopinions",
+      "minAccountAge": 0,
+      "minCurrentProfit": 0,
+      "minTotalProfit": 0,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 5,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 2.5
+      }
+    },{
+      "name": "24 hour Elite",
+      "slug": "24hourelite",
+      "minAccountAge": 7,
+      "minCurrentProfit": 15,
+      "minTotalProfit": 15,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 1
+    },{
+      "name": "3 day Elite",
+      "slug": "3dayelite",
+      "minAccountAge": 7,
+      "minCurrentProfit": 15,
+      "minTotalProfit": 15,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 3
+    },{
+      "name": "5 day Elite",
+      "slug": "5dayelite",
+      "minAccountAge": 7,
+      "minCurrentProfit": 15,
+      "minTotalProfit": 15,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 5
+    },{
+      "name": "[w] 3 day Elite",
+      "slug": "w3dayelite",
+      "minAccountAge": 7,
+      "minCurrentProfit": 15,
+      "minTotalProfit": 15,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 3,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 1.5
+      }
+    },{
+      "name": "[w] 5 day Elite",
+      "slug": "w5dayelite",
+      "minAccountAge": 7,
+      "minCurrentProfit": 15,
+      "minTotalProfit": 15,
+      "minChangesMonth": 0,
+      "minChangeCount": 0,
+      "maxLastChange": 5,
+      "weight": {
+        "maxWeight": 1.5,
+        "maxDays": 2.5
+      }
+    }]
+}
