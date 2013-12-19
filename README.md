@@ -23,23 +23,28 @@ $ node main.js
 ## Object documentation
 
 ### config:
-
+AWS is currently not used.
 - **aws** - Access keys for connecting to Amazon S3. Can be retrieved from the AWS console under Security Credentials.
 	- **bucket** - Must be a bucket that your aws account has read/write access to.
 	- **s3File** - Filename of the database
 - **serverPort** - Web interface server port. Port 80 requires sudo on most servers.
+- **exchangeFee** - Fees taken from every trade. BTC-e imposes a 0.2% fee. Default is 0.5% to be conservative. Represented as a percent (0.2 = 0.2%)
+- **exchangeHours** - Hours of the day in which trades occur. Represented in UTC time. In PST, this defaults to 4am, 10am, 4pm and 10pm
 - **profiles** - Coinsight profiles with filters and settings
 	- **name** - Text name of profile
 	- **slug** - URL safe representation of the name (lowercase and no spaces)
-	- **s3File** - Filename of the database
 	- **minAccountAge** - Minimum reddit coinsight age to be included in pool.
 	- **minCurrentProfit** - Minimum coinsight monthly profit to be included in pool.
 	- **minTotalProfit** - Minimum coinsight lifetime profit to be included in pool.
 	- **minChangesMonth** - Minimum coinsight flair changes per month to be included in pool.
 	- **minChangeCount** - Minimum coinsight flair lifetime changes to be included in pool.
+	- **maxLastChange** - Maximum number of days since last flair change
+	- **weight** - Weight parameter objects. The profile is not weighted if this object is undefined
+		- **maxWeight** - Maximum weight that a profile can have. 1.5 means 150% the power of an unweighted user if flair was just updated
+		- **maxDays** - Weight is linearly applied, and after the last flair change is older than maxDays, the user becomes unweighted.
 
 ### coinsight:
-
+The coinight class is one that keeps track of the current profile. It is recreated every time coinsight data is fetched. Profile meta is to be derived from coinsight data. Expect coinsight data to be temporary.
 - **users** - Object of user data from coinsight
 - **filters** - Profile settings from config
 - **size** - Amount of users that passed the filter
@@ -49,3 +54,13 @@ $ node main.js
 - **percentBears** - Percent of bull flairs
 - **creationTime** - Time of the javaScript coinsight object creation
 - **totalProfit** - Percent profit of the profile in decimal form (1 = break even)
+
+### profileMeta:
+The profileMeta class keeps track of the long term information of the profile such as BTC and USD value. It is serialized and stored in a file and the program attempts to find a saved profileMeta file on each restart. 
+- **profileBirth** - MomentJS object of when the profilemeta was first created
+- **profitPercentage** - Represents the value of the profile relative to the initial investment 
+- **BTC** - BTC Value. Rounded to nearest satoshi.
+- **USD** - BTC-e USD Value. Rounded to nearest 1/1000th of a dollar
+- **value** - Value expressed in BTC if the USD were to be immediately converted to BTC at the fastest price
+- **trade()** - Method that converts trades BTC to try and match the bull ratio defined in the corresponding coinsight object
+- **update()** - Method that updates the profile value but does not do any trading  
