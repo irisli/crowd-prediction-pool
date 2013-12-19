@@ -55,6 +55,29 @@ The coinight class is one that keeps track of the current profile. It is recreat
 - **creationTime** - Time of the javaScript coinsight object creation
 - **totalProfit** - Percent profit of the profile in decimal form (1 = break even)
 
+#### coinsight.user:
+Here is an exmple of what an individual user in the coinsight object may look like:
+```json
+{
+    "username": "boogie_wonderland",
+    "monthly_balance": 0.741898402648962,
+    "update_time": "2013-12-18 09:15:30",
+    "current_profit": "123.15",
+    "check_count": 24,
+    "creation_time": 1380059113,
+    "btc_value": 1.656,
+    "position": "bear",
+    "balance": 894.012468418656,
+    "last_post": 0,
+    "balance_str": "894.0125 USD",
+    "change_count": 16,
+    "account_age": 85.16,
+    "changes_month": 5.64,
+    "last_change": 0.38,
+    "total_profit": 65.6
+}
+```
+
 ### profileMeta:
 The profileMeta class keeps track of the long term information of the profile such as BTC and USD value. It is serialized and stored in a file and the program attempts to find a saved profileMeta file on each restart. 
 - **profileBirth** - MomentJS object of when the profilemeta was first created
