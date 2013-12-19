@@ -10,8 +10,8 @@
   "exchangeFee": 0.5,
   "exchangeHours": [0,6,12,18],
   "profiles": [{
-      "name": "Old Elitist",
-      "slug": "oldelitist",
+      "name": "Old Elite",
+      "slug": "oldelite",
       "minAccountAge": 21,
       "minCurrentProfit": 30,
       "minTotalProfit": 30,
@@ -19,8 +19,8 @@
       "minChangeCount": 3,
       "maxLastChange": 4
     },{
-      "name": "Young Elitist",
-      "slug": "youngelitist",
+      "name": "Young Elite",
+      "slug": "youngelite",
       "minAccountAge": 7,
       "minCurrentProfit": 30,
       "minTotalProfit": 30,

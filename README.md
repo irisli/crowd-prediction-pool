@@ -1,4 +1,4 @@
-# prediction-pool
+# crowd-prediction-pool
 A **BTC/USD** swing trading bot that pulls data from user [flair predictions](http://coinsight.org/#reddit) on [/r/bitcoinmarkets](http://reddit.com/r/bitcoinmarkets). By using the wisdom of the crowds, this method can gain valuable insight on the market from a hopefully reliable pool of users.
 
 ## Terminology
@@ -87,3 +87,33 @@ The profileMeta class keeps track of the long term information of the profile su
 - **value** - Value expressed in BTC if the USD were to be immediately converted to BTC at the fastest price
 - **trade()** - Method that converts trades BTC to try and match the bull ratio defined in the corresponding coinsight object
 - **update()** - Method that updates the profile value but does not do any trading  
+
+
+## Wishlist
+
+### Comments
+The code is quite heavily commented. Some of the comments are actually questions and simple TODO's.
+```
+//!  This is a TODO
+//?  This is a question
+//D  This needs debugging
+```
+
+### Smart Trader and StochRSI
+Currently, trades are done every 6 hours. This can be very ineffective since we are trading at a position which is very unfavorable to us. I would like to eventually see StochRSI implemented as a smarter trader that can time the position trading when it is a good time to buy/sell.
+
+In the future, I would also want to experiment with using a long-term implementation of StochRSI as an indicator of bear/bull that we can use to create hybrid profiles that combines Reddit predictions and technical indicators (such as StochRSI, MACD, Williams).
+
+This idea is also documented in profilemeta.js:
+```
+  //! Todo: Make an trade object that takes care of the low level aspects of 
+  //  interfacing with the exchange since we must interact with the bid-ask spread and
+  //  our orders might not be instantly processed.
+  //  The trader can be smart and use a predictors such as StochRSI to determine
+  //  where to place buy/sell order to minimize money lost through the bid-ask spread.
+  //  See: http://www.investopedia.com/terms/s/stochasticoscillator.asp
+  //  In action: http://bitcoinwisdom.com/  and under Settings, turn on StochRSI
+```
+
+### Trade flags
+Add flags to the chart whenever trades occur and mark how much was bought/sold. Mockup: [http://jsfiddle.net/u4pYh/](http://jsfiddle.net/u4pYh/)
