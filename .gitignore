@@ -1,0 +1,10 @@
+aws.json
+config.json
+.DS_STORE
+
+*.swp
+node_modules/
+json/
+build.sh
+build.tar.gz
+classes/
