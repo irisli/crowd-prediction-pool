@@ -24,11 +24,6 @@ $ node main.js
 
 ### config:
 - **aws** AWS is currently not used. Flat file storage is great for portability
-<!---
-- **aws** - Access keys for connecting to Amazon S3. Can be retrieved from the AWS console under Security Credentials.
-	- **bucket** - Must be a bucket that your aws account has read/write access to.
-	- **s3File** - Filename of the database
--->
 - **serverPort** - Web interface server port. Port 80 requires sudo on most servers.
 - **exchangeFee** - Fees taken from every trade. BTC-e imposes a 0.2% fee. Default is 0.5% to be conservative. Represented as a percent (0.2 = 0.2%)
 - **exchangeHours** - Hours of the day in which trades occur. Represented in UTC time. In PST, this defaults to 4am, 10am, 4pm and 10pm
