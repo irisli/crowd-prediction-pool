@@ -2,9 +2,9 @@
   "aws": {
     "accessKeyId": "KEYGOESHERE",
     "secretAccessKey": "123KEYGOESHERE",
-    "region": "us-east-1"
-  },
-  "bucket": "bucket-name-here",
+    "region": "us-east-1",
+    "bucket": "bucket-name-here",
+  }
   "port": 8000,
   "s3File": "data.json",
   "exchangeFee": 0.5,

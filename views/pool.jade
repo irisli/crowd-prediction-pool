@@ -1,0 +1,35 @@
+include ./pool-highstock.jade
+.highchart-container
+  #highchart
+.container
+  p(class="status") #{statusText}
+  table#maintable.table.table-striped.tablesorter.table-hover
+    thead
+      tr
+        th Name
+        th ⚙ Account Age
+        th ⚙ Current Profit
+        th ⚙ Total Profit
+        th ⚙ Changes Month
+        th ⚙ Change Count
+        th ⚙ Last Change (days)
+        th Profile value
+        th Profile size
+        th Bulls
+        th Bears
+    tbody
+     - each profile in pool
+        tr
+          td.name
+            a(href='/profile/#{profile.slug}' ) !{profile.name} 
+          td= profile.filters.minAccountAge
+          td= profile.filters.minCurrentProfit
+          td= profile.filters.minTotalProfit
+          td= profile.filters.minChangesMonth
+          td= profile.filters.minChangeCount
+          td= profile.filters.maxLastChange
+          td= profile.value
+          td= profile.size
+          td= profile.percentBulls + '%'
+          td= profile.percentBears + '%'
+  include ./pool-table.jade

@@ -1,0 +1,36 @@
+script(src="/js/jquery.tablesorter.min.js")
+script.
+	$(document).ready(function() {
+
+	$.tablesorter.addParser({
+		// set a unique id 
+		id: 'timesort',
+		is: function (s) {
+			// return false so this parser is not auto detected 
+			return false;
+		},
+		format: function (s, table, cell, cellIndex) {
+			// get data attributes from $(cell).attr('data-something');
+			// check specific column using cellIndex
+			return $(cell).attr('data-seconds');
+		},
+			// set type, either numeric or text 
+			type: 'numeric'
+		});
+		$('#maintable').tablesorter({ 
+			/* Custom sorting for numbers displayed as text such as: 3 days vs 5 hours.
+			The five hours would appear to be older since 3 days since it's obviously not.
+
+			To use this, it neds to be parsed by the stuff above. Example: <td data-seconds="86400">1 day</td>
+				headers: {
+				3: {
+					sorter: 'timesort'
+				},
+				4: {
+					sorter: 'timesort'
+				}
+			}*/
+
+			sortList: [[7,1]] // Default sort: 8th column, profile value, DESC
+		});
+	});

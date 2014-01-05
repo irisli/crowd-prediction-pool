@@ -1,0 +1,165 @@
+script(src="/js/jquery.highstock.js")
+script(src="/js/jquery.highstock.exporting.js")
+script(src="/js/moment.min.js")
+script var pool = !{profileJSON};
+script var profileSlugs = [#{slugList}];
+script var exchangeSlug = 'btce';
+script var exchangeName = 'BTC-e';
+script.
+	//! Need to make this more modular with pool-highstock.jade so that it will be easier to develop
+	$(function() {
+		var seriesOptions = [],
+			yAxisOptions = [],
+			seriesCounter = 0,
+			colors = Highcharts.getOptions().colors;
+
+
+		$.getJSON('/json/?filename='+ exchangeSlug +'-ohlc.json&callback=?',	function(data) {
+			seriesOptions[0] = {
+				name: exchangeName,
+				data: data,
+				type:'ohlc',
+				color: 'red',
+				upColor: 'green',
+				yAxis: 1,
+				lineWidth: 3,
+				states: {
+					hover: {
+						enabled: true,
+						lineWidth: 3
+					}
+				},
+				dataGrouping: {
+					forced: true
+				}
+			};
+
+			$.each(pool, function(i, profile) {
+
+				$.getJSON('/json/?filename='+ profile['slug'].toLowerCase() +'-value.json&callback=?',	function(data) {
+
+					seriesOptions[i + 1] = {
+						name: profile['name'],
+						data: data,
+						type:'line',
+						dataGrouping: {
+							approximation: 'average',
+							forced: true
+						}
+						
+					};
+
+					// As we're loading the data asynchronously, we don't know what order it will arrive. So
+					// we keep a counter and create the chart when all the data is loaded.
+					seriesCounter++;
+
+					// Now load the BTC/USD exchange rate
+					if (seriesCounter == pool.length) {
+						createChart();
+					}
+				}).done(function() { console.log('getJSON request succeeded!'); })
+				.fail(function(jqXHR, textStatus, errorThrown) { console.log('getJSON request failed! ' + textStatus); })
+				.always(function() { console.log('getJSON request ended!'); });
+			});
+		});
+		
+		Highcharts.setOptions({
+			global: {
+				useUTC: false
+			}
+		});
+
+
+
+		// create the chart when all data is loaded
+		function createChart() {
+
+			$('#highchart').highcharts('StockChart', {
+				credits: {
+					enabled: false
+				},
+
+
+				yAxis: [{ // Prediction Axis
+						labels: {
+							formatter: function() {
+								return this.value +' BTC';
+							},
+							style: {
+								color: '#89A54E'
+							}
+						},
+						title: {
+							text: 'Profile BTC value',
+							style: {
+								color: '#89A54E'
+							}
+						},
+						opposite: true
+					}, { // BTC/USD Exchange Axis
+						title: {
+							text: 'BTC/USD',
+							style: {
+								color: '#4572A7'
+							}
+						},
+						labels: {
+							formatter: function() {
+								return '$' + this.value;
+							}
+						}
+					}],
+
+				plotOptions: {
+					series: {
+						
+					}
+				},
+
+				tooltip: {
+					
+					pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+					valueDecimals: 3,
+					shared: true,
+					snap:50,
+					borderColor: "#7bd083",
+					formatter: function() {
+						// Reinvent a better wheel with sorting
+						//! The sorting puts the biggest numbers on the top. 1 BTC costs around $300-1000 so ohlc data is usually at the top
+						//  However, if the value of one profile exceeds the price of 1 BTC, then the price of BTC will a
+						var s = '<span>'+ moment(this.x).format('MMM Do YYYY, h:mm a') +'</span>';
+						var series;
+						var sortedPoints = this.points.sort(function(a, b){
+							return ((a.y > b.y) ? -1 : ((a.y < b.y) ? 1 : 0));
+						});
+						console.log(sortedPoints)
+						$.each(sortedPoints , function(i, point) {
+							series = point.series; // Shortcut
+							if (series.options.type == 'ohlc') {
+								s += '<br /><span style="color:' + series.color + '">' + series.name + '</span><br />' + 'Open: $' + point.point.open + '<br />' + 'High: $' + point.point.high + '<br />'  + 'Low: $' + point.point.low + '<br />' + 'Close: $' + point.point.close + '<br /><p style="color:rgba(255,255,255,0)">Hidden Text :)</p><br />';
+							}
+							else {
+								s += '<br/><span style="color:' + series.color + '">' + series.name + '</span>: <b>' + Math.round(point.y * 10000)/10000 + '</b><br/>';
+							}
+						});
+						return s;8
+					},
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'left',
+					x: 120,
+					verticalAlign: 'top',
+					y: 80,
+					floating: true,
+					backgroundColor: '#FFFFFF'
+				},
+				chart: {
+					height: 500
+				},
+
+				series: seriesOptions
+			});
+			//! Figure out how to format the date to not show superfluous seconds .dateFormat('%A, %b %d, %H:%M')
+		}
+	});

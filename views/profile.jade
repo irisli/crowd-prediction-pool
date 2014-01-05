@@ -1,0 +1,27 @@
+include ./profile-highstock.jade
+#highchart
+.highchart-container
+  #highchart
+.container
+  p(class="status") !{statusText}
+  table#maintable.table.table-striped.tablesorter.table-hover
+    thead
+      tr
+        th Username
+        th Position
+        th Worth (BTC)
+        th Change Count
+        th Total Profit (%)
+        th Monthly Profit (%)
+        th Last Change (days)
+    tbody
+     - each user in profile.users
+        tr
+          td.name
+            a(href='http://www.reddit.com/user/#{user.username}' ) !{user.username}
+          td(class="#{user.position}",)= user.position
+          td= user['btc_value']
+          td= user['change_count']
+          td= user['total_profit']
+          td= user['current_profit']
+          td= user['last_change']

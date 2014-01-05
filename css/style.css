@@ -1,0 +1,182 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+html body * {
+	font-family: 'Open Sans', sans-serif;
+}
+body {
+	color:#444;
+}
+
+.highchart-container {
+	padding-left:3px;
+	padding-right:3px;
+}
+#highchart {
+	margin-bottom: -14px;
+	z-index: 0;
+}
+
+.container {
+	width:100%;
+	max-width:1280px;
+	padding-left:36px;
+	padding-right:36px;
+	z-index: 100;
+	position: relative;
+}
+p.status {
+	background-color:#cff5d3;
+	
+	margin-bottom:0;
+	padding:9px;
+}
+h1 {
+	background-color:#89e892;
+	padding:1em;
+	text-align:center;
+	margin-top:0;
+	font-weight:300;
+	margin-bottom:1em;
+	color:#fff;
+}
+h1 a, h1 a:hover, h1 a:focus {
+	color: #fff;
+	text-decoration:none;
+}
+a:hover, a:focus {
+	color: #447449;
+}
+
+
+a {
+	color:#5fa266;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	padding:9px;
+}
+/*
+Green conversion chart
+OLDHEX NEWHEX
+
+Darker
+89e892 89e892
+6db974 6db974
+5fa266 5fa266
+528b57 528b57
+
+Lighter
+94ea9c 94ea9c
+8bd8f7 a0eca7
+99ddf8 aceeb2
+a8e2f9 b8f1bd
+b6e7fa c4f3c8
+
+
+
+
+
+
+
+*/
+table thead th {
+	cursor: pointer;
+	*cursor: hand;
+	background-color:#89e892;
+	border: none !important;
+	color:#333;
+	font-weight:400;
+}
+
+table thead th.header:hover {
+	background-color:#5fa266;
+
+}
+table thead th.headerSortDown,
+table thead th.headerSortUp {
+	background-color:#6db974;
+}
+footer {
+	text-align: center;
+	font-size:12px;
+	color:#ccc;
+}
+.table-bordered tbody td {
+	border:none !important;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+	background-color:#f7f7f7;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+	background-color:#efefef;
+}
+
+.table-hover > tbody > tr:hover > td {
+	background-color: #cff5d3;
+}
+
+.online, .table-striped>tbody>tr:nth-child(odd)>td.online, .table-bordered tbody td .online {
+	background-color:#A2D39C !important;
+}
+.offline, .table-striped>tbody>tr:nth-child(odd)>td.offline {
+	background-color:#ffb3a4 !important;
+}
+
+.bull, .table-striped>tbody>tr:nth-child(odd)>td.bear, .table-bordered tbody td .bull {
+	background-color:#A2D39C !important;
+}
+.bear, .table-striped>tbody>tr:nth-child(odd)>td.bear {
+	background-color:#ffb3a4 !important;
+}
+
+
+tr {
+
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	border-top: none;
+}
+td.name { /* Give name priority so white space is distributed more beautifully */
+	white-space: nowrap;
+}
+
+
+
+
+
+/* graph */
+#placeholder {
+padding: 0px; position: relative;
+}
+
+
+.demo-container {
+	box-sizing: border-box;
+	width: calc(100%+0px);
+	height: 300px;
+	background: #fff;
+	margin-bottom:-16px;
+	margin-left:-28px;
+	margin-right:-28px;
+}
+
+.demo-placeholder {
+	width: 100%;
+	height: 100%;
+	margin-top:-7px;
+	margin-bottom:68px;
+}
+
+.average {
+}
+.total {
+	margin: 0 1em;
+}
+
+.average, .total {
+	display:inline-block;
+	padding-bottom:28px;
+}
+

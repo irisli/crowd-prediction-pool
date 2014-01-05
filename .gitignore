@@ -7,5 +7,4 @@ node_modules/
 json/*
 build.sh
 build.tar.gz
-classes/
 !json/blank.txt
