@@ -1,12 +1,13 @@
 {
   "aws": {
+    "note": "AWS not implemented",
     "accessKeyId": "KEYGOESHERE",
     "secretAccessKey": "123KEYGOESHERE",
     "region": "us-east-1",
     "bucket": "bucket-name-here",
-  }
+    "s3File": "data.json"
+  },
   "port": 8000,
-  "s3File": "data.json",
   "exchangeFee": 0.5,
   "exchangeHours": [0,6,12,18],
   "profiles": [{

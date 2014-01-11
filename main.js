@@ -72,7 +72,7 @@ moment().tz("Etc/Universal").format();
  *  moment.timeSince() - Formats time since in a human readable version
  *  Object.size() - Returns the size of object
  */
-require(__dirname + '/functions.js');
+require(__dirname + '/classes/functions.js');
 
 /**
  * StatusItem superclass
