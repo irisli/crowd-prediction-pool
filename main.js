@@ -1,10 +1,4 @@
-/**
-  Commenting notes:
 
-  //!  This is a TODO
-  //?  This is a question
-  //D  This needs debugging
-**/
 
 /**
  * Config
@@ -27,7 +21,7 @@ var server = http.createServer(app);
 var url = require('url');
 
 // Cookies for session detection
-app.use(express.cookieParser()); app.use(express.session({secret: 'correcthorsebatterystaplejustkidding2937geuwjghv9dufg'}));
+app.use(express.cookieParser()); app.use(express.session({secret: 'correcthorsebatterystaplejustkiddingbutWE-DONT-EVEN-USE-COOKIES'}));
 
 // Set up jade
 app.set('views', __dirname + '/views')
@@ -91,7 +85,6 @@ var coinsight = require(__dirname + '/classes/coinsight.js');
  *  
  */
 var profileMeta = require(__dirname + '/classes/profilemeta.js');
-//? I have a naming dilemma. What should I change this to?
 
 
 // Pool variable contains all the profiles (coinsight objects)
@@ -109,7 +102,6 @@ var profilemeta = [];
  */
 var ajax = require(__dirname + '/classes/ajax.js');
 
-//? AmIDoingThisRiteHereToo?
 var status = {
   main: new statusItem(['server']),
   startup: new statusItem(['coinsight','btce-ticker', 'profilemeta'])
@@ -246,7 +238,7 @@ app.get('/json/*', function(req, res) {
     res.send(get['callback'] + '(\n[\n' + jsonFile + '\n]);');
   });
 
-  });
+});
 
 // Main page
 app.get('/', function(req, res) {

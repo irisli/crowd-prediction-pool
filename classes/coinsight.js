@@ -28,8 +28,8 @@ module.exports = function coinsight(items, filters, profileMeta) {
     this.users[user]['btc_value'] = Math.round(this.users[user]['btc_value']*1000)/1000;
 
     // Calculate game account age (days)
-    this.users[user]['account_age'] = Math.round(moment().diff(this.users[user]['creation_time'] * 1000, 'days', true) *100)/100;
-    
+    this.users[user]['account_age'] = Math.round(moment().diff(moment(this.users[user]['creation_time']), 'days', true) *100)/100;
+
     // Calculate prediction changes/30days and round to 2 decimal places
     this.users[user]['changes_month'] = Math.round(this.users[user]['change_count'] / (this.users[user]['account_age']/30) *100) / 100;
    
@@ -128,18 +128,17 @@ module.exports = function coinsight(items, filters, profileMeta) {
   }
 }
 
-//! Merge with constructor since we won't need 
+//! Merge with constructor since we won't ever call this by itself
 module.exports.prototype.filter = function() {
   var filters = this.filters;
 
-  //D Anonymous function can't see the this.profile. Gotta use local variable. Any way to fix?
   //! Ack, I'm sorry the names are so confusing. This filter is an Array.filter(), not this.filter
   this.users = this.users.filter(function (user) {
   return user['account_age'] > filters.minAccountAge &&
          user['total_profit'] > filters.minTotalProfit &&
          user['changes_month'] > filters.minChangesMonth &&
          user['change_count'] > filters.minChangeCount &&
-         user['last_change'] < filters.maxLastChange;
+         user['last_change'] > filters.maxLastChange;
   });
 }
 
