@@ -10,20 +10,15 @@ A **BTC/USD** swing trading bot that pulls data from user [flair predictions](ht
 
 Fill in the blanks of the config.json.sample and cp it to config.json.
 
-Install mongodb, ubuntu instructions can be found at http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
-
-Setup AWS command line tools, for ubuntu follow http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/SettingUp_CommandLine.html#setting_up_ec2_command_linux
-
 ```bash
 $ npm install
 $ node main.js
 ```
 
-
 ## Object documentation
 
 ### config:
-- **aws** AWS is currently not used. Flat file storage is great for portability
+- **aws** AWS is currently not used. Flat file json storage is great for portability
 - **serverPort** - Web interface server port. Port 80 requires sudo on most servers.
 - **exchangeFee** - Fees taken from every trade. BTC-e imposes a 0.2% fee. Default is 0.5% to be conservative. Represented as a percent (0.2 = 0.2%)
 - **exchangeHours** - Hours of the day in which trades occur. Represented in UTC time. In PST, this defaults to 4am, 10am, 4pm and 10pm

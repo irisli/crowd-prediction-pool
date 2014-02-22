@@ -1,3 +1,6 @@
+/**
+ * Note: this code was hacked together really quickly. Sorry for the messiness
+ */
 
 
 /**
@@ -23,7 +26,9 @@ var url = require('url');
 // Cookies for session detection
 app.use(express.cookieParser()); app.use(express.session({secret: 'correcthorsebatterystaplejustkiddingbutWE-DONT-EVEN-USE-COOKIES'}));
 
-// Set up jade
+/**
+ * Jade
+ */
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
 
@@ -46,7 +51,6 @@ app.use(express.favicon(__dirname + '/images/icons/favicon.ico'));
 // var http = require('http'); // Already declared earlier
 var https = require('https');
 
-
 /**
  * Time support library
  * http://momentjs.com/ 
@@ -59,7 +63,6 @@ moment().tz("Etc/Universal").format();
 
 //! Gotta figure out a way to make time relative to us. Coinsight returns gmt 
 // moment().tz("America/Los_Angeles").format();
-
 
 /**
  * Extensions to some objects
@@ -119,7 +122,7 @@ app.get('/status', function(req, res) {
   res.send('Coinsight last updated: ' + pool[0].objectAge() + ' seconds ago. BTC-e sell: ' + btce.sell + '<br />BTC-e buy: ' + btce.buy + '<br />Predictions from ' + pool[0].size + ' users.<br />' + pool[0].numBulls + ' bulls (' + pool[0].percentBulls + '%)<br />' + pool[0].numBears + ' bears (' + pool[0].percentBears + '%)<iframe src="/chosen-ones/api"  seamless="seamless" style="width:100%;height:70%;"></iframe>');
 });
 
-// More like debug tools
+// Not really an api but more like debug tools
 app.get('/api', function(req, res) {
 
   var url_parts = url.parse(req.url, true); var get = url_parts.query;
