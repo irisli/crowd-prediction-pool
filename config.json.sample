@@ -1,12 +1,4 @@
 {
-  "aws": {
-    "note": "AWS not implemented",
-    "accessKeyId": "KEYGOESHERE",
-    "secretAccessKey": "123KEYGOESHERE",
-    "region": "us-east-1",
-    "bucket": "bucket-name-here",
-    "s3File": "data.json"
-  },
   "port": 8000,
   "exchangeFee": 0.5,
   "exchangeHours": [0,6,12,18],
@@ -18,7 +10,7 @@
       "minTotalProfit": 30,
       "minChangesMonth": 5,
       "minChangeCount": 3,
-      "maxLastChange": 4
+      "maxLastChange": 7
     },{
       "name": "Young Elite",
       "slug": "youngelite",
@@ -27,7 +19,7 @@
       "minTotalProfit": 30,
       "minChangesMonth": 5,
       "minChangeCount": 3,
-      "maxLastChange": 4
+      "maxLastChange": 7
     },{
       "name": "Aged Profitable",
       "slug": "agedprofitable",
@@ -36,7 +28,7 @@
       "minTotalProfit": 0,
       "minChangesMonth": 5,
       "minChangeCount": 3,
-      "maxLastChange": 4
+      "maxLastChange": 7
     },{
       "name": "All Profitable",
       "slug": "allprofitable",
@@ -45,7 +37,7 @@
       "minTotalProfit": 0,
       "minChangesMonth": 5,
       "minChangeCount": 3,
-      "maxLastChange": 4
+      "maxLastChange": 7
     },{
       "name": "Young Daytrader",
       "slug": "youngdaytrader",
@@ -54,7 +46,7 @@
       "minTotalProfit": 5,
       "minChangesMonth": 10,
       "minChangeCount": 10,
-      "maxLastChange": 2
+      "maxLastChange": 4
     },{
       "name": "[w] Young Daytrader",
       "slug": "wyoungdaytrader",
@@ -63,7 +55,7 @@
       "minTotalProfit": 5,
       "minChangesMonth": 10,
       "minChangeCount": 10,
-      "maxLastChange": 2,
+      "maxLastChange": 4,
       "weight": {
         "maxWeight": 1.5,
         "maxDays": 1
@@ -76,7 +68,7 @@
       "minTotalProfit": 5,
       "minChangesMonth": 10,
       "minChangeCount": 10,
-      "maxLastChange": 2
+      "maxLastChange": 4
     },{
       "name": "[w] Old Daytrader",
       "slug": "wolddaytrader",
@@ -85,7 +77,7 @@
       "minTotalProfit": 5,
       "minChangesMonth": 10,
       "minChangeCount": 10,
-      "maxLastChange": 2,
+      "maxLastChange": 4,
       "weight": {
         "maxWeight": 1.5,
         "maxDays": 1
