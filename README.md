@@ -1,6 +1,7 @@
 # crowd-prediction-pool
 A **BTC/USD** swing trading bot that pulls data from user [flair predictions](http://coinsight.org/#reddit) on [/r/bitcoinmarkets](http://reddit.com/r/bitcoinmarkets). By using the wisdom of the crowds, this method can gain valuable insight on the market from a hopefully reliable pool of users.
 
+Demo: http://crowd.iris.li/
 ## Terminology
 
 - **pool** - Group of multiple profiles to compare which way can earn the most profits.
