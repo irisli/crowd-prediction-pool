@@ -132,14 +132,13 @@ module.exports = function coinsight(items, filters, profileMeta) {
 module.exports.prototype.filter = function() {
   var filters = this.filters;
 
-  //! Ack, I'm sorry the names are so confusing. This filter is an Array.filter(), not this.filter
   this.users = this.users.filter(function (user) {
   return user['account_age'] > filters.minAccountAge &&
          user['total_profit'] > filters.minTotalProfit &&
          user['changes_month'] > filters.minChangesMonth &&
          user['change_count'] > filters.minChangeCount &&
          user['last_change'] < filters.maxLastChange &&
-         user['position'] == "bear" || user['position'] == "bull"
+         (user['position'] == "bear" || user['position'] == "bull")
   });
 }
 
