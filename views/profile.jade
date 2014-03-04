@@ -12,7 +12,6 @@ include ./profile-highstock.jade
         th Worth (BTC)
         th Change Count
         th Total Profit (%)
-        th Monthly Profit (%)
         th Last Change (days)
     tbody
      - each user in profile.users
@@ -23,5 +22,4 @@ include ./profile-highstock.jade
           td= user['btc_value']
           td= user['change_count']
           td= user['total_profit']
-          td= user['current_profit']
           td= user['last_change']
