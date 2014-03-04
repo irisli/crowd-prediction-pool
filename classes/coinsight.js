@@ -138,7 +138,7 @@ module.exports.prototype.filter = function() {
          user['total_profit'] > filters.minTotalProfit &&
          user['changes_month'] > filters.minChangesMonth &&
          user['change_count'] > filters.minChangeCount &&
-         user['last_change'] > filters.maxLastChange;
+         user['last_change'] < filters.maxLastChange;
   });
 }
 
