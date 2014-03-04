@@ -154,14 +154,6 @@ app.get('/api', function(req, res) {
   }
 });
 
-
-
-
-app.get('/chosen-ones/coinsightobject', function(req, res) {
-  // Return data. Cannot be blank
-  res.send(pool[0]);
-});
-
 // Show a profile
 app.get('/profile/*', function(req, res) {
   // Variable get has the get variables ..
@@ -177,24 +169,21 @@ app.get('/profile/*', function(req, res) {
 
   var theKey = 0;
   for (key in pool) {
-    console.log(key);
+    // console.log(key);
     if (pool[key]['slug'] == profileslug) {
-      console.log(pool[key]);
+      // console.log(pool[key]);
       profile = pool[key];
       theKey = key;
     }
   }
 
 
-  profileslug = profileslug.replace(/[^a-z0-9-.\s]/gi, ''); // Overprotective much, but prevent XSS
+  profileslug = profileslug.replace(/[^a-z0-9-.\s]/gi, ''); // Whitelist username
 
   var statusText = [];
 
   statusText.push('Debug data: <a href="/api/?users&profile=' + profileslug + '">users</a>, <a href="/api/?coinsight&profile=' + profileslug + '">coinsight Object</a>, <a href="/api/?profilemeta&profile=' + profileslug + '">profilemeta</a> ');
 
-  console.log('>>>>>>');
-  //console.log(profile);
-  console.log('<<<<<<');
   res.render('overview', {
     'title':'Profile: ' + profile.name,
     "page": 'profile',
@@ -202,7 +191,6 @@ app.get('/profile/*', function(req, res) {
     "statusText": statusText.join(' | ')
   });
 
-  //res.send('<a href="/chosen-ones">Click here to view the chosen ones.</a>');
 });
 
 // JSON charts API
@@ -230,7 +218,7 @@ app.get('/json/*', function(req, res) {
   get['callback'] = get['callback'].replace(/[^a-z0-9_.\s]/gi, '');
 
   res.set('Content-Type', 'text/javascript');
-  console.log(__dirname + '/json/' + get['filename']);
+  // console.log(__dirname + '/json/' + get['filename']);
   fs.readFile(__dirname + '/json/' + get['filename'], 'utf8', function (err,jsonFile) {
     if (err) {
       console.log('JSON file not found: ' + get['filename']);
@@ -271,7 +259,6 @@ app.get('/', function(req, res) {
     "statusText": statusText.join(' | ')
   });
 
-  //res.send('<a href="/chosen-ones">Click here to view the chosen ones.</a>');
 });
 
 // Show all the stuff
@@ -282,7 +269,6 @@ app.get('/*', function(req, res) {
     "page": '404'
   });
 
-  //res.send('<a href="/chosen-ones">Click here to view the chosen ones.</a>');
 });
 
 
