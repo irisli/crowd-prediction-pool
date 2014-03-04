@@ -363,15 +363,13 @@ function writeGraphs() {
 function getProfileMeta() {
   for (key in config.profiles) {
     try {
-      //Run some code here
       console.log(__dirname + '/json/' + config.profiles[key]['slug'] + '-meta.json')
       var data = fs.readFileSync(__dirname + '/json/' + config.profiles[key]['slug'] + '-meta.json', 'utf8');
       
-      console.log(JSON.parse(data));
+      // console.log(JSON.parse(data)); // Debug file data
       profilemeta[key] = new profileMeta(JSON.parse(data));
     }
     catch(err) {
-      //Handle errors here
       profilemeta[key] = new profileMeta();
     }
   }
@@ -441,7 +439,6 @@ function getBTCEdata() {
     } else if (btce.last < btceLow) {
       btceLow = btce.last;
     }
-  console.log(btce);
   });
 }
 getBTCEdata();
